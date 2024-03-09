@@ -29,6 +29,7 @@ public class ApplicationDBContext : DbContext
         modelBuilder.Entity<Person>().Property(p => p.IsActive).IsRequired().HasColumnType("Bit").HasDefaultValue("(0)");
 
         modelBuilder.Entity<Relationship>().Property(r => r.RelationshipType).IsRequired();
+        modelBuilder.Entity<Relationship>().HasKey(r => new { r.Person1Id, r.Person2Id });
         modelBuilder.Entity<Relationship>().HasOne(r => r.Person1).WithMany(p => p.Relationships1).HasForeignKey(r => r.Person1Id);
         modelBuilder.Entity<Relationship>().HasOne(r => r.Person2).WithMany(p => p.Relationships2).HasForeignKey(r => r.Person2Id);
 
