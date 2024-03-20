@@ -2,11 +2,10 @@
 
 public class Relationship
 {
-    public int Id { get; set; }
-    public int Person1Id { get; set; }
-    public Person Person1 { get; set; } = null!;
-    public int Person2Id { get; set; }
-    public Person Person2 { get; set; } = null!;
+    public int FromPersonId { get; set; }
+    public Person FromPerson { get; set; } = null!;
+    public int ToPersonId { get; set; }
+    public Person ToPerson { get; set; } = null!;
     public RelationshipType RelationshipType { get; set; }
 }
 public enum RelationshipType : byte

@@ -1,4 +1,5 @@
-﻿using Task.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using Task.Repository;
 using Task.Service;
 using Task.Service.Interfaces.Repository;
 
@@ -12,5 +13,7 @@ public static class DependencyConfiguration
         if (builder == null) throw new ArgumentNullException(nameof(builder));
 
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(connectionString));
+
     }
 }

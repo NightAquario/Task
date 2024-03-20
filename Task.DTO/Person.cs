@@ -14,10 +14,8 @@ public class Person
     public DateTime CreateDate { get; set; }
     public bool IsActive { get; set; }
 
-
-    public ICollection<Relationship> Relationships1 { get; set; } = null!;
-    public ICollection<Relationship> Relationships2 { get; set; } = null!;
-
+    public ICollection<Relationship>? RelationshipFrom { get; set; }
+    public ICollection<Relationship>? RelationshipTo { get; set; }
 }
 public enum Gender : byte
 {
