@@ -15,7 +15,7 @@ public class ApplicationDBContext : DbContext
 
         modelBuilder.Entity<City>().Property(c => c.Name).HasColumnType("nvarchar(50)").IsRequired();
         modelBuilder.Entity<City>().HasIndex(c => c.Name).IsUnique();
-        modelBuilder.Entity<City>().Property(c => c.IsActive).HasColumnType("bit").HasDefaultValueSql("(0)");
+        modelBuilder.Entity<City>().Property(c => c.IsActive).HasColumnType("bit").HasDefaultValue(false);
         modelBuilder.Entity<City>().Property(c => c.CreateDate).HasColumnType("date").HasDefaultValueSql("GetDate()");
         modelBuilder.Entity<City>().HasMany(c => c.People).WithOne(p => p.City);
 
