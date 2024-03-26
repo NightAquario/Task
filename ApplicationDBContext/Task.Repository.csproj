@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.csproj" />
     <ProjectReference Include="..\Task.DTO\Task.DTO.csproj" />
     <ProjectReference Include="..\Task.Service\Task.Service.csproj" />
   </ItemGroup>
