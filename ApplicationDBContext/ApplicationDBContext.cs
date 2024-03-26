@@ -24,7 +24,7 @@ public class ApplicationDBContext : DbContext
         modelBuilder.Entity<Person>().Property(p => p.PersonalNumber).HasColumnType("Nvarchar(11)").IsRequired();
         modelBuilder.Entity<Person>().Property(p => p.DateOfBirth).IsRequired().HasColumnType("Date").HasAnnotation("CheckConstraint", "DateOfBirth <= DateAdd(Year, -18, GetDate())");
         /* Picture */
-        modelBuilder.Entity<Person>().HasMany(c => c.PhoneNumbers).WithOne(c => c.PersonId);
+        modelBuilder.Entity<Person>().HasMany(c => c.PhoneNumbers).WithOne(c => c.Person);
         modelBuilder.Entity<Person>().Property(p => p.CreateDate).IsRequired().HasColumnType("Date").HasDefaultValueSql("GetDate()");
         modelBuilder.Entity<Person>().Property(p => p.IsActive).IsRequired().HasColumnType("Bit").HasDefaultValue(false);
 
@@ -36,7 +36,7 @@ public class ApplicationDBContext : DbContext
         modelBuilder.Entity<PhoneNumber>().Property(p => p.Number).HasColumnType("Nvarchar(50)").IsRequired().HasAnnotation("MinLength", 4);
         modelBuilder.Entity<PhoneNumber>().Property(p => p.IsActive).HasColumnType("bit").HasDefaultValue(false);
         modelBuilder.Entity<PhoneNumber>().Property(p => p.CreateDate).HasColumnType("date").HasDefaultValueSql("GetDate()");
-        modelBuilder.Entity<PhoneNumber>().HasOne(p => p.PersonId).WithMany(p => p.PhoneNumbers);
+        modelBuilder.Entity<PhoneNumber>().HasOne(p => p.Person).WithMany(p => p.PhoneNumbers);
 
     }
 
