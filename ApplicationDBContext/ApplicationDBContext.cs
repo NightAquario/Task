@@ -1,6 +1,7 @@
 ﻿using Configuration;
 using Microsoft.EntityFrameworkCore;
 using Task.DTO;
+using Task.Service.Interfaces.Configuration;
 
 namespace Task.Repository;
 

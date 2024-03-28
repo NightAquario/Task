@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Task.Repository;
-using Task.Service;
-using Task.Service.Interfaces.Repository;
-
 
 namespace Task.Api.Configuration;
 

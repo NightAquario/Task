@@ -52,6 +52,17 @@ public class PersonConfiguration : IEntityConfiguration
             .HasColumnType("Bit")
             .HasDefaultValue(false);
 
+        modelBuilder.Entity<Person>()
+            .HasMany(p => p.RelationshipFrom)
+            .WithOne(r => r.FromPerson)
+            .HasForeignKey(r => r.FromPersonId).IsRequired(false);
+
+        modelBuilder.Entity<Person>()
+            .HasMany(p => p.RelationshipTo)
+            .WithOne(p => p.ToPerson)
+            .HasForeignKey(r => r.ToPersonId).IsRequired(false);
+
+
         return true;
     }
 }
